@@ -1,0 +1,5 @@
+# created on each PC when FBNeo_LS runs
+FBNeo_LS.ini
+FBNeo_LS.log
+FBNeo_LS.log.old
+*.bak*
