@@ -24,8 +24,10 @@ if ($Enable) {
     try {
         $sh  = New-Object -ComObject WScript.Shell
         $lnk = $sh.CreateShortcut($lnkPath)
-        $lnk.TargetPath       = Join-Path $env:SystemRoot 'System32\WindowsPowerShell\v1.0\powershell.exe'
-        $lnk.Arguments        = "-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File `"$ps1Path`""
+        # conhost.exe is used so that the window can be hidden even when Windows Terminal is the default terminal.
+        $psExe = Join-Path $env:SystemRoot 'System32\WindowsPowerShell\v1.0\powershell.exe'
+        $lnk.TargetPath       = Join-Path $env:SystemRoot 'System32\conhost.exe'
+        $lnk.Arguments        = "`"$psExe`" -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File `"$ps1Path`""
         $lnk.WorkingDirectory = $PSScriptRoot
         $lnk.WindowStyle      = 7   # minimized, so the window does not flash
         $lnk.Description      = 'FBNeo_LS (Lossless Scaling for Fightcade FBNeo)'

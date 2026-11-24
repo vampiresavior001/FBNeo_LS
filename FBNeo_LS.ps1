@@ -3,7 +3,7 @@
 # Log is written to FBNeo_LS.log (same folder).
 # https://github.com/vampiresavior001/FBNeo_LS  (MIT License)
 
-$version = '1.0.0'
+$version = '1.0.1'
 
 # ---- default settings (used when FBNeo_LS.ini does not set them) ----
 $cfg = [ordered]@{
